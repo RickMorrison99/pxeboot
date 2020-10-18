@@ -1,0 +1,22 @@
+#cloud-config
+autoinstall:
+  version: 1
+  identity:
+    hostname: ubuntu2004
+    password: "$6$exDY1mhS4KUYCE/2$zmn9ToZwTKLhCw.b4/b.ZRTIZM30JZ4QrOQ2aOXJ8yk96xpcCof0kxKwuX1kqLG/ygbJ1f8wxED22bTL4F46P0"
+    username: ubuntu
+  keyboard:
+    layout: us
+    variant: ''
+  late-commands:
+  - 'echo "ubuntu ALL=(ALL) NOPASSWD: ALL" > /target/etc/sudoers.d/ubuntu'
+  - chmod 440 /target/etc/sudoers.d/ubuntu
+  - apt-get -y install linux-headers-$(uname -r)
+  locale: en_US
+  packages:
+  - ubuntu-desktop
+  ssh:
+   allow-pw: true
+   authorized-keys: []
+   install-server: true
+               
